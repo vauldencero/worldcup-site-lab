@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界杯知识库 · 路标与查询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.7;
+        }
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2e44 70%, #1f3a57 100%);
+            color: #e7edf5;
+            padding: 3.5rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #f5a623, #f7c948, #f5a623);
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.6rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 650px;
+            margin: 0.3rem auto 0.8rem;
+        }
+        .hero .sub {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            display: inline-block;
+            padding-top: 0.8rem;
+            margin-top: 0.3rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+        }
+        .grid-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2.8rem;
+        }
+        @media (max-width: 700px) {
+            .grid-intro {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 20, 40, 0.06);
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 20, 40, 0.10);
+        }
+        .card h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #f0c75e;
+            display: inline-block;
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 1rem 0 0.4rem;
+            color: #1e3a5f;
+        }
+        .card p, .card li {
+            color: #2f3e54;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card li {
+            padding: 0.25rem 0 0.25rem 1.4rem;
+            position: relative;
+        }
+        .card li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #d4a017;
+            font-weight: bold;
+        }
+        .highlight {
+            background: #f0f4fa;
+            padding: 2rem 1.8rem;
+            border-radius: 20px;
+            margin: 2.5rem 0;
+            border-left: 6px solid #f5a623;
+        }
+        .highlight p {
+            margin: 0.4rem 0;
+        }
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem 2rem;
+            margin: 2rem 0 1.2rem;
+        }
+        .faq-item {
+            flex: 1 1 280px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .faq-item .q {
+            font-weight: 600;
+            color: #0b1a2e;
+            display: block;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+        }
+        .faq-item .a {
+            color: #3f5069;
+            font-size: 0.95rem;
+        }
+        .link-wrap {
+            margin: 1.8rem 0 0.8rem;
+            font-size: 1rem;
+        }
+        a {
+            color: #1f6390;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        a:hover {
+            color: #c9881a;
+            border-bottom-color: #c9881a;
+        }
+        .button-minimal {
+            display: inline-block;
+            background: #eef3f9;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #1f3a57;
+            margin-top: 0.3rem;
+            border: 1px solid #dae2ec;
+        }
+        .button-minimal:hover {
+            background: #e1e9f3;
+            border-color: #b0c4db;
+        }
+        .meta-note {
+            font-size: 0.9rem;
+            color: #5c6f87;
+            border-top: 1px solid #d6e0ec;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .meta-note a {
+            color: #2f6396;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #dce4ef;
+            margin: 1.8rem 0;
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <h1>⚽ 世界杯 · 查询台</h1>
+    <p>一场赛事，无数细节。从赛历、赛制到经典对话——<br>日常对照与延伸阅读的轻量知识库。</p>
+    <span class="sub">📆 2026 美加墨 · 持续更新中</span>
+</section>
+
+<div class="container">
+
+    <!-- 双栏介绍：目录感 -->
+    <div class="grid-intro">
+        <div class="card">
+            <h2>📋 常用查照</h2>
+            <ul>
+                <li>比赛时间 &amp; 时区对照</li>
+                <li>小组赛分组与对阵图</li>
+                <li>场馆容量 · 城市速览</li>
+                <li>往届冠军 &amp; 纪录</li>
+                <li>参赛球队晋级路线</li>
+            </ul>
+            <div class="link-wrap">
+                想快速定位赛程？试试从 <a href="https://max-fifa2026.com">世界杯</a> 首页开始浏览。
+            </div>
+        </div>
+        <div class="card">
+            <h2>🧭 延伸阅读</h2>
+            <ul>
+                <li>历届经典比赛复盘</li>
+                <li>球星列传 &amp; 战术演变</li>
+                <li>主办城市文化指南</li>
+                <li>裁判规则与 VAR 解读</li>
+                <li>球迷故事与场外花絮</li>
+            </ul>
+            <p style="margin-top:1rem;font-size:0.95rem;">内容聚合自公开资料与赛事档案，方便日常翻阅。</p>
+        </div>
+    </div>
+
+    <!-- 说明区：特点与使用场景 -->
+    <div class="highlight">
+        <h3 style="font-weight:600;margin-bottom:0.5rem;color:#0b1a2e;">📌 这个页面适合谁？</h3>
+        <p>⚡ 想在碎片时间了解一届大赛的脉络，而不是被信息淹没。<br>
+        ⚡ 写稿、做功课、看球前查对阵——保持轻快，但又有深度入口。<br>
+        ⚡ 不追求轰动标题，只把经过核验的赛事数据、背景故事按目录组织起来。</p>
+        <p style="margin-top:0.8rem;">比如你想回忆 2018 年决赛的进球顺序，或者对比 2026 新增的赛制变化，这里都能快速定位。</p>
+    </div>
+
+    <!-- 提示区：日常使用小贴士 -->
+    <div style="display:flex; flex-wrap:wrap; gap:1.8rem; margin:1.8rem 0;">
+        <div style="flex:1; min-width:220px;">
+            <span style="background:#eaeef5; padding:0.2rem 1rem; border-radius:30px; font-size:0.8rem; color:#1e3a5f;">💡 提示</span>
+            <p style="margin-top:0.6rem;">将页面加入浏览器书签，赛前打开即可看到今日赛程和往届对照。部分内容支持关键词搜索。</p>
+        </div>
+        <div style="flex:1; min-width:220px;">
+            <span style="background:#eaeef5; padding:0.2rem 1rem; border-radius:30px; font-size:0.8rem; color:#1e3a5f;">🗂️ 结构</span>
+            <p style="margin-top:0.6rem;">每个分类卡片都可以点击展开更多条目，信息层级清晰，不堆叠广告或无关跳转。</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区：FAQ 摘要 + 补充 -->
+    <h2 style="font-size:1.5rem; font-weight:600; margin:2rem 0 0.6rem; color:#112538;">❓ 常见疑问 · 摘要</h2>
+    <div class="faq-mini">
+        <div class="faq-item">
+            <span class="q">2026 世界杯有多少支球队？</span>
+            <span class="a">扩军至 48 支，小组赛分为 16 组，每组 3 队，赛程约 40 天。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">在哪可以查完整赛历？</span>
+            <span class="a">主站 <a href="https://max-fifa2026.com">世界杯</a> 页面按日期、场馆列出全部比赛，支持时区切换。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">有没有往届比赛对比？</span>
+            <span class="a">延伸阅读部分整理了 1930 年至今的决赛数据、最佳射手等表格。</span>
+        </div>
+        <div class="faq-item">
+            <span class="q">页面多久更新一次？</span>
+            <span class="a">重要信息（抽签、阵容、规则调整）会在 48 小时内同步。</span>
+        </div>
+    </div>
+
+    <hr>
+
+    <div style="text-align:center; margin: 0.5rem 0 1rem;">
+        <p style="font-size:1rem; color:#2b405b;">无论你是资深球迷还是偶尔关注，<a href="https://max-fifa2026.com">世界杯</a> 的知识库入口都为你敞开。</p>
+        <p style="font-size:0.9rem; color:#5f7390; margin-top:0.2rem;">数据来源 · 国际足联官方文件 / 公开赛事档案</p>
+    </div>
+
+    <div class="meta-note">
+        <span>📚 目录式查询 · 无广告 · 便于日常翻阅</span><br>
+        <span style="font-size:0.8rem; opacity:0.6;">内容仅供参考，请以官方发布为准</span>
+    </div>
+
+</div>
+
+</body>
+</html>
