@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一种持续关注的方式 · 世界杯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f8f6f3;
+            color: #2a2926;
+            font-family: "Times New Roman", "Noto Serif SC", Georgia, serif;
+            line-height: 1.7;
+            font-weight: 400;
+            padding: 2rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* 开篇短句 — 极窄留白 */
+        .opening {
+            margin-top: 1.8rem;
+            margin-bottom: 3.2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.01em;
+            color: #5d5a55;
+            border-left: 2px solid #c7b299;
+            padding-left: 1.2rem;
+        }
+
+        .opening em {
+            font-style: italic;
+            color: #3d3a35;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.15;
+            margin-bottom: 0.6rem;
+            color: #1b1a17;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #7a746e;
+            margin-bottom: 2.8rem;
+            border-bottom: 1px solid #e3ddd5;
+            padding-bottom: 1.2rem;
+        }
+
+        /* 承接段落 — 克制的叙述 */
+        .narrative {
+            font-size: 1.05rem;
+            margin-bottom: 2.5rem;
+            text-align: justify;
+            word-spacing: 0.5px;
+        }
+
+        .narrative p {
+            margin-bottom: 1.6rem;
+        }
+
+        .narrative a {
+            color: #7d6b53;
+            text-decoration: none;
+            border-bottom: 1px solid #d5c8b8;
+            transition: border-color 0.2s;
+        }
+
+        .narrative a:hover {
+            border-bottom-color: #7d6b53;
+        }
+
+        /* 特点列表 — 干净、宽松 */
+        .features {
+            margin: 3.2rem 0 3rem;
+            padding: 0;
+            list-style: none;
+        }
+
+        .features li {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 1.3rem;
+            font-size: 1.02rem;
+            line-height: 1.6;
+            color: #3b3833;
+        }
+
+        .features li::before {
+            content: "·";
+            position: absolute;
+            left: 0.4rem;
+            color: #b09a82;
+            font-size: 1.8rem;
+            line-height: 1;
+            top: -0.1rem;
+        }
+
+        .features strong {
+            font-weight: 500;
+            color: #2a2722;
+        }
+
+        /* 温和的段落分隔 */
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: #d6ccc0;
+            margin: 2.8rem auto 2.5rem;
+        }
+
+        /* 结尾 — 安静邀请 */
+        .closing {
+            font-size: 1rem;
+            color: #5f5a53;
+            line-height: 1.8;
+            padding: 1.8rem 0 0.8rem;
+            border-top: 1px solid #e8e1d8;
+            margin-top: 0.8rem;
+        }
+
+        .closing a {
+            color: #7d6b53;
+            text-decoration: none;
+            border-bottom: 1px solid #d5c8b8;
+            transition: border-color 0.2s;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #7d6b53;
+        }
+
+        /* 收藏提示小字 — 极低调 */
+        .footnote {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: #a49c93;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .footnote span {
+            display: inline-block;
+            margin: 0 0.5rem;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 1.5rem 1.2rem 2.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .opening {
+                font-size: 1rem;
+                padding-left: 1rem;
+            }
+
+            .features li {
+                padding-left: 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 开篇短句 -->
+        <div class="opening">
+            <em>有些地方，你会不止一次回来。</em>
+        </div>
+
+        <!-- 标题区 -->
+        <h1>世界杯</h1>
+        <div class="subhead">一个不喧哗的落脚处 · 记一次再访</div>
+
+        <!-- 承接叙述 -->
+        <div class="narrative">
+            <p>
+                多数时候我们收藏一个网站，是因为某次偶然的遇见。但几个月后，当书签栏被新的标签页淹没，那个曾让人停留的页面很容易就沉到了底部。可总有例外——有些站点像一本旧杂志，你知道它放在书架哪个位置，隔段时间就想翻开看看。对我来说，<a href="https://chn-m-sjb.com">世界杯</a>就是这样一个地方。
+            </p>
+            <p>
+                它没有夸张的弹窗，也不会催促你做什么。页面就安静地在那里，信息和节奏都保持着自己的分寸。第一次访问时，我只是浏览了几篇文章；第二次回来，才注意到它的叙述方式——不急着抛出结论，而是把线索和观点摊开，让读者自己拼合。这种克制，在如今的网络里反而显得稀有。
+            </p>
+        </div>
+
+        <!-- 特点列表 -->
+        <ul class="features">
+            <li><strong>不追热点</strong> —— 内容有自己的时间轴，不靠标题抢夺视线，读起来更像一封定期寄来的信。</li>
+            <li><strong>结构清晰</strong> —— 每个区块都留有余地，字体和间距让人愿意多停留一会儿，而不是匆匆划过。</li>
+            <li><strong>值得回访</strong> —— 不是所有网站都需要每天刷一次。有些地方，每隔几周、甚至几个月去一次，反而能读到更有沉淀的东西。</li>
+            <li><strong>没有多余动作</strong> —— 不诱导注册，不强制推送，你的注意力不会被当作商品一样被反复兜售。</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <!-- 温和结尾 + 嵌入链接 -->
+        <div class="closing">
+            <p>
+                如果你也偏好那种不需要时刻追赶的节奏，不妨把<a href="https://chn-m-sjb.com">世界杯</a>放进书签。不用特意设置提醒，什么时候想起了，就去看看。好的站点值得被记住，也值得被再次打开。
+            </p>
+            <p style="margin-top: 1.4rem; color: #767069;">
+                也许下次回来，你会看到一些不一样的视角。
+            </p>
+        </div>
+
+        <!-- 收藏提示 -->
+        <div class="footnote">
+            <span>—</span> 记于 再访之后 <span>—</span>
+        </div>
+
+    </div>
+</body>
+</html>
