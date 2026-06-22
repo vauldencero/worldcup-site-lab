@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全景世界杯 · 赛事导航与科普</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', sans-serif;
+            background-color: #f7f3eb;
+            color: #2c2a28;
+            line-height: 1.65;
+            padding: 2rem 1.25rem;
+        }
+
+        .page {
+            max-width: 960px;
+            margin: 0 auto;
+            background: #fcfaf6;
+            border-radius: 28px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.02);
+            padding: 2.6rem 2.2rem;
+            transition: padding 0.2s;
+        }
+
+        /* 导航区 */
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 1.2rem 2rem;
+            margin-bottom: 3.2rem;
+            border-bottom: 1px solid #e4ddd3;
+            padding-bottom: 0.9rem;
+        }
+
+        .nav-bar .brand {
+            font-weight: 520;
+            font-size: 1.2rem;
+            letter-spacing: 0.5px;
+            color: #a57649;
+        }
+
+        .nav-bar .brand small {
+            font-weight: 350;
+            font-size: 0.85rem;
+            color: #9b897a;
+            margin-left: 6px;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #5b4d3f;
+            font-size: 0.98rem;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 4px;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .nav-links a:hover {
+            border-bottom-color: #bf9b7a;
+            color: #4d3e30;
+        }
+
+        /* hero */
+        .hero {
+            margin: 2.8rem 0 3rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 390;
+            letter-spacing: -0.3px;
+            color: #2a231d;
+            line-height: 1.2;
+            margin-bottom: 1.1rem;
+        }
+
+        .hero h1 span {
+            background: #eee5da;
+            padding: 0.1rem 0.4rem;
+            font-weight: 480;
+        }
+
+        .hero p {
+            font-size: 1.08rem;
+            color: #4f443a;
+            max-width: 75%;
+            border-left: 4px solid #cfb79b;
+            padding-left: 1.5rem;
+            margin-top: 0.4rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero p {
+                max-width: 100%;
+                padding-left: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .page {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+
+        /* 正文排版 */
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 2.6rem 0 1.2rem 0;
+            border-left: 6px solid #d6bea2;
+            padding-left: 1rem;
+            color: #3b332b;
+        }
+
+        .text-block {
+            margin-bottom: 2rem;
+        }
+
+        .text-block p {
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        /* 引用 / 提示框 */
+        .insight-box {
+            background: #efe8dd;
+            border-left: 8px solid #b59877;
+            padding: 1.4rem 1.8rem;
+            border-radius: 0 20px 20px 0;
+            margin: 2rem 0 2.4rem 0;
+            font-size: 0.98rem;
+            color: #3a3229;
+        }
+
+        .insight-box strong {
+            font-weight: 530;
+            color: #4d3d2b;
+        }
+
+        /* 场景卡片 */
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            margin: 2rem 0 1.4rem;
+        }
+
+        .scene-card {
+            background: #f8f3ec;
+            border-radius: 20px;
+            padding: 1.6rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #ece4d9;
+            transition: transform 0.2s ease, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            border-color: #d4c2ae;
+        }
+
+        .scene-card h3 {
+            font-weight: 450;
+            font-size: 1.15rem;
+            margin-bottom: 0.7rem;
+            color: #564b3e;
+            border-bottom: 1px dashed #d0beaa;
+            padding-bottom: 0.3rem;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #4e4237;
+        }
+
+        @media (max-width: 700px) {
+            .scene-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: #f3ede5;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin: 2.6rem 0 1.8rem;
+        }
+
+        .faq-mini h2 {
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 1.4rem;
+            color: #3d332b;
+        }
+
+        .faq-item {
+            margin-bottom: 1.1rem;
+        }
+
+        .faq-item summary {
+            font-weight: 450;
+            cursor: pointer;
+            color: #4e3f30;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-item summary::before {
+            content: "▸";
+            color: #b29374;
+            font-size: 1.2rem;
+            transition: transform 0.1s;
+        }
+
+        .faq-item[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-item p {
+            margin-top: 0.5rem;
+            padding-left: 1.8rem;
+            color: #3f352c;
+            font-size: 0.94rem;
+            max-width: 85%;
+        }
+
+        /* 链接自然嵌入 */
+        .inline-link {
+            color: #7a623f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #ceb79b;
+            font-weight: 450;
+        }
+
+        .inline-link:hover {
+            color: #4d3823;
+            text-decoration-color: #9d7f5b;
+        }
+
+        hr {
+            margin: 2rem 0 1rem;
+            border: none;
+            border-top: 1px solid #e3d9cc;
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: #968675;
+            margin-top: 1.6rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 导航 -->
+    <nav class="nav-bar">
+        <span class="brand">⚽ 赛事索引 <small>· 知识向</small></span>
+        <div class="nav-links">
+            <a href="#">概览</a>
+            <a href="#">赛制</a>
+            <a href="#">记录</a>
+            <a href="#">文化</a>
+        </div>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>不止是比赛<br><span>世界杯</span> 的脉络与回响</h1>
+        <p>从首届到最新预选，从规则演变到地域影响——理解这项全球运动背后的叙事。</p>
+    </div>
+
+    <!-- 介绍段落（知识型，承接） -->
+    <div class="text-block">
+        <p>
+            <a href="https://webs-wc26lottery.com" class="inline-link">世界杯</a> 在近一个世纪里逐渐从区域性邀请赛演变为覆盖六大洲、超过两百支代表队参与的竞逐。它的魅力并不只在于决赛夜的奖杯归属，也在于每届比赛如何折射出足球哲学、战术思潮乃至社会文化的变迁。例如小组赛阶段的积分规则从两分制过渡到三分制，直接影响了各队的攻守策略。同时，东道主的选择、比赛用球的技术迭代、VAR 介入的边界——都成为每届赛事前后的讨论焦点。
+        </p>
+        <p>
+            在预选赛阶段，不同大洲的晋级配额与赛制差异也常引发有趣比较。南美区十队双循环的强度，与亚洲区多轮次、跨年度的赛程形成鲜明对比。这些设计背后是国际足联对“公平与覆盖”的持续平衡。而每届正赛的 32 队（2026 年起扩至 48 队）分布，也直接决定了小组赛的竞争格局与冷门概率。
+        </p>
+    </div>
+
+    <!-- 引用/提示框 -->
+    <div class="insight-box">
+        <strong>一点背景：</strong> 1930 年首届赛事只有 13 支队伍，其中 9 支来自美洲。而到 2022 年，共有 211 个会员协会参与了预选赛。这种扩张不仅是数字增长，也意味着足球版图的重心迁移——更多来自亚洲、非洲的队伍开始挑战传统强队的地位。
+    </div>
+
+    <!-- 三个场景模块（轻量卡片） -->
+    <h2 class="section-title">三种常见观察视角</h2>
+    <div class="scene-grid">
+        <div class="scene-card">
+            <h3>🏟️ 赛程与轮转</h3>
+            <p>小组循环+淘汰赛的结构已沿用多年，但每届的抽签分档、同洲回避原则、以及第三轮淘汰赛对阵规则都在微调。了解这些底层设计，能更好地预测可能出现“死亡之组”或轻松半区。</p>
+        </div>
+        <div class="scene-card">
+            <h3>📊 数据与记录</h3>
+            <p>射手榜、出场次数、助攻序列——但这些数据背后还藏着更细致的维度：关键传球、预期进球 (xG)、高位压迫成功率等。近年的数据公开让球迷得以用更立体的方式复盘比赛。</p>
+        </div>
+        <div class="scene-card">
+            <h3>🌍 文化符号</h3>
+            <p>每届吉祥物、官方歌曲、主办国建筑与开幕式创意，都构成了赛事周边的记忆锚点。比如 1998 年法国世界杯的“高卢雄鸡”与 2018 年俄罗斯的“扎比瓦卡”，都承载了特定时期的审美与叙事。</p>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2>❓ 简要说明 · 常见问题摘要</h2>
+        <details class="faq-item">
+            <summary>预选赛阶段通常持续多久？</summary>
+            <p>各大洲预选赛一般在正赛前三年左右启动，例如 2026 年世界杯预选赛于 2023 年就已陆续开始。赛程跨度 2–3 年，包含多轮分组循环和附加赛。</p>
+        </details>
+        <details class="faq-item">
+            <summary>世界杯历史中哪届参赛队伍最少？</summary>
+            <p>1930 年乌拉圭世界杯，仅有 13 支球队参加。1934 年意大利世界杯采用纯淘汰赛制，16 队参赛，但部分球队需通过预选产生。</p>
+        </details>
+        <details class="faq-item">
+            <summary>同一大洲能否主办两届连续赛事？</summary>
+            <p>国际足联目前没有严格禁止，但实际操作中倾向于轮换大洲。2002 年韩日与 2010 年南非、2014 年巴西等案例显示，跨洲轮换是常态但并非硬性规定。</p>
+        </details>
+    </div>
+
+    <!-- 额外承接段落：自然再次提及链接 -->
+    <div class="text-block" style="margin-top: 1.2rem;">
+        <p>
+            如果你正在追踪最新一届预选赛的积分形式、出线条件以及历史交手记录，<a href="https://webs-wc26lottery.com" class="inline-link">世界杯</a> 专题站聚合了多种数据与解读，帮助球迷从庞杂信息中梳理出清晰的脉络。无论是小组抽签概率还是淘汰赛对阵推演，都可以在那里找到结构化的参考。
+        </p>
+    </div>
+
+    <hr>
+    <div class="footer-note">
+        知识型内容 · 仅供信息参考
+    </div>
+</div>
+</body>
+</html>
