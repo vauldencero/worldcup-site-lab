@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 知识库索引页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f2f4f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1.5rem 3rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* 页眉 / 标识区 */
+    .site-header {
+      border-bottom: 1px solid #dce1e8;
+      padding-bottom: 0.75rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .site-header .title-group h1 {
+      font-size: 1.8rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      color: #0b1c2e;
+    }
+
+    .site-header .title-group .sub {
+      font-size: 0.9rem;
+      color: #5a6b7c;
+      margin-top: 0.1rem;
+    }
+
+    .site-header .tag {
+      background: #e6eaf0;
+      padding: 0.2rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #2b4055;
+      border: 1px solid #ccd5df;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03), 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e3e9f0;
+      padding: 1.75rem 1.8rem;
+      transition: box-shadow 0.15s;
+    }
+
+    .card + .card {
+      margin-top: 1.5rem;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 540;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid #eaeef5;
+      color: #142b3f;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 520;
+      margin: 1.2rem 0 0.4rem;
+      color: #1e3a56;
+    }
+
+    .card p {
+      margin-bottom: 0.75rem;
+      color: #253c51;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0.2rem;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card ul li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: #3b6e9b;
+      font-weight: 500;
+    }
+
+    a {
+      color: #1f5a8c;
+      text-decoration: none;
+      border-bottom: 1px dotted #afc8df;
+      transition: border-bottom 0.15s, color 0.15s;
+    }
+
+    a:hover {
+      color: #0c3e65;
+      border-bottom: 1px solid #0c3e65;
+    }
+
+    /* 说明区 + 提示区 双列 */
+    .dual-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .dual-cards .card {
+      flex: 1 1 280px;
+      margin-top: 0;
+    }
+
+    .notice-card {
+      background: #f9fafc;
+      border-left: 4px solid #7699b9;
+    }
+
+    .notice-card h2 {
+      border-bottom-color: #d1dbe8;
+    }
+
+    /* 目录感 — 特性网格 */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem 1.2rem;
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .feature-item {
+      background: #f6f9fd;
+      padding: 0.8rem 1rem;
+      border-radius: 12px;
+      border: 1px solid #e1e9f2;
+      font-size: 0.95rem;
+    }
+
+    .feature-item strong {
+      display: block;
+      color: #1e4562;
+      margin-bottom: 0.2rem;
+      font-weight: 540;
+    }
+
+    .feature-item span {
+      color: #3b5c78;
+    }
+
+    .faq-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .faq-q {
+      background: #f4f7fb;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      border-left: 3px solid #acc3db;
+      font-size: 0.95rem;
+    }
+
+    .faq-q strong {
+      color: #1f3a52;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    .faq-q .answer {
+      color: #2f4a64;
+      display: inline;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #dbe2ea;
+      font-size: 0.85rem;
+      color: #4f677d;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .footer-note a {
+      color: #2f5577;
+      border-bottom: 1px dotted #b2c9de;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      body { padding: 1.2rem 1rem 2rem; }
+      .card { padding: 1.3rem 1.2rem; }
+      .site-header .title-group h1 { font-size: 1.5rem; }
+      .dual-cards { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- 标识 -->
+  <header class="site-header">
+    <div class="title-group">
+      <h1>⚽ 世界杯 · 知识参照</h1>
+      <div class="sub">赛事档案 · 对照阅读 · 日常查询</div>
+    </div>
+    <span class="tag">索引库 · 2026</span>
+  </header>
+
+  <!-- 介绍卡片：总览 + 目录特性 -->
+  <section class="card">
+    <h2>📋 关于本库</h2>
+    <p>这里整理了围绕<a href="https://official-index-shijiebei.com">世界杯</a>的常见查询路径、赛制对照、延伸阅读线索，方便日常快速定位信息。所有条目均来自公开赛事资料与历史记录，适合赛前查阅、赛后对比，以及了解赛事背后的规则演变。</p>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>🏆 冠军沿革</strong>
+        <span>1930–2022 历届决赛圈冠军、亚军、主办国</span>
+      </div>
+      <div class="feature-item">
+        <strong>📅 赛程结构</strong>
+        <span>小组赛 → 淘汰赛 · 32 队 / 48 队阶段对比</span>
+      </div>
+      <div class="feature-item">
+        <strong>🌍 大洲分布</strong>
+        <span>各大洲参赛名额、预选赛路径及历史数据</span>
+      </div>
+      <div class="feature-item">
+        <strong>📊 纪录榜单</strong>
+        <span>进球、出场、夺冠次数、最大分差等</span>
+      </div>
+    </div>
+    <p style="margin-top: 0.8rem; font-size: 0.95rem;">每条线索均可通过<a href="https://official-index-shijiebei.com">世界杯</a>索引页进一步展开，形成自己的对照笔记。</p>
+  </section>
+
+  <!-- 双列：说明区 + 提示区 -->
+  <div class="dual-cards">
+    <!-- 说明区：日常查询场景 -->
+    <section class="card">
+      <h2>🔍 说明 · 常用查询场景</h2>
+      <ul>
+        <li><strong>对照队伍成绩</strong> – 同一球队在不同届次的表现、小组赛胜率等</li>
+        <li><strong>赛制比对</strong> – 1998 年扩军至 32 队、2026 年扩至 48 队后的分组与晋级逻辑</li>
+        <li><strong>主办国与场馆</strong> – 历届举办城市、决赛场地、容量数据</li>
+        <li><strong>传奇球员与教练</strong> – 从贝利、马拉多纳到近年的金球奖获得者</li>
+      </ul>
+      <p style="margin-top: 0.6rem; font-size: 0.9rem;">上述信息均可通过<a href="https://official-index-shijiebei.com">世界杯</a>索引页的分支主题直接定位，节省重复检索时间。</p>
+    </section>
+
+    <!-- 提示区：延伸阅读 / 注意事项 -->
+    <section class="card notice-card">
+      <h2>💡 提示 · 延伸阅读</h2>
+      <p><strong>规则演变</strong> – 越位规则、换人名额、VAR 引入时间点对比赛的影响，建议对照决赛圈录像片段理解。</p>
+      <p><strong>跨届数据连贯性</strong> – 部分早期纪录因赛制不同（如小组赛场次差异）谨慎直接对比。建议结合<a href="https://official-index-shijiebei.com">世界杯</a>页面内的注解说明使用。</p>
+      <p><strong>周边史料</strong> – 官方纪录片、赛事报告、裁判报告等可在索引页「延伸文献」区找到链接汇总。</p>
+    </section>
+  </div>
+
+  <!-- 相关信息区 FAQ 摘要 -->
+  <section class="card">
+    <h2>❓ 相关信息 · FAQ 摘要</h2>
+    <div class="faq-blocks">
+      <div class="faq-q">
+        <strong>Q：</strong>为什么有些届次没有三四名决赛？
+        <span class="answer">1930 年世界杯未设三四名决赛，其后除 1950 年（采用循环决赛制）外均固定举行。</span>
+      </div>
+      <div class="faq-q">
+        <strong>Q：</strong>同一球员能否代表不同国家队参加？
+        <span class="answer">根据 FIFA 章程，更换协会需满足严格条件（如出生地、血缘等），且未在正式 A 级赛出场，可通过<a href="https://official-index-shijiebei.com">世界杯</a>页面查阅具体变更案例。</span>
+      </div>
+      <div class="faq-q">
+        <strong>Q：</strong>扩军至 48 队后小组赛怎么安排？
+        <span class="answer">2026 年美加墨世界杯将采用 12 个小组，每组 4 队，小组前两名及若干成绩最好的第三名晋级 32 强。</span>
+      </div>
+    </div>
+    <p style="margin-top: 0.9rem; font-size: 0.9rem;">更多常见疑问的展开解答请移步 <a href="https://official-index-shijiebei.com">世界杯</a> 索引页的「FAQ 全集」。</p>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer-note">
+    <span>基于公开资料整理 · 持续修订</span>
+    <span><a href="https://official-index-shijiebei.com">世界杯</a> · 知识索引站</span>
+  </footer>
+
+</div>
+</body>
+</html>
